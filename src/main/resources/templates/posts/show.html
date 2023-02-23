@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head">
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<h1>Title: <span th:text="${posts.title}"></span><hr>
+    Body: <span th:text="${posts.body}"></span><hr>
+    ID: <span th:text="${posts.id}"></span></h1>
+<footer th:replace="partials :: footer"></footer>
+<div th:insert="partials :: boot-scripts"></div>
+</body>
+</html>
