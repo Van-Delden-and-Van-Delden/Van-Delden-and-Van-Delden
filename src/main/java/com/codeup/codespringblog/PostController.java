@@ -5,31 +5,40 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PostController {
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
+    }
+
     @GetMapping("/posts")
     public String index(Model model) {
-        ArrayList<Post> postslist = new ArrayList<>();
-        Post first = new Post(1, "First Post", "God I hope this thing works");
-        Post second = new Post(2, "Second Post", "Phew");
-        postslist.add(first);
-        postslist.add(second);
+        List<Post> postslist = postDao.findAll();
         model.addAttribute("postslist", postslist);
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String idpage(@PathVariable int id, Model model) {
-        Post posts = new Post(id, "First Post", "God I hope this thing works");
+    public String idpage(@PathVariable Long id, Model model) {
+        Post posts = postDao.findPostsById(id);
         model.addAttribute("posts", posts);
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
     public String create() {
-        return "view the form for creating a post";
+        return "posts/create";
+    }
+
+    @PostMapping("posts/create")
+    public String createPost(@RequestParam(name = "title") String title, @RequestParam(name="body") String body) {
+        Post post = new Post(title,body);
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
 }

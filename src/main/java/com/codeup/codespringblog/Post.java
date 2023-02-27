@@ -1,6 +1,17 @@
 package com.codeup.codespringblog;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(nullable = false, length = 100)
+    private String title;
+    @Column(nullable = false)
+    private String body;
     public int getId() {
         return id;
     }
@@ -9,12 +20,18 @@ public class Post {
         this.id = id;
     }
 
-    private int id;
-    private String title;
-    private String body;
+
+
+    public Post() {
+    }
 
     public Post(int id, String title, String body) {
         this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
+    public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
