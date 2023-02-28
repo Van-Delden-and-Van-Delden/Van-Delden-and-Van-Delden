@@ -23,6 +23,10 @@ nav {
     margin-right: 1em;
 }
 
+#editButton {
+    background-color: deepskyblue;
+}
+
 nav button {
     background: none;
     color: inherit;
@@ -33,7 +37,7 @@ nav button {
     outline: inherit;
 }
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 3em;
