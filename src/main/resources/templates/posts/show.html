@@ -8,7 +8,8 @@
 <nav th:replace="partials :: navbar"></nav>
 <h1>Title: <span th:text="${posts.title}"></span><hr>
     Body: <span th:text="${posts.body}"></span><hr>
-    ID: <span th:text="${posts.id}"></span></h1>
+    ID: <span th:text="${posts.user.email}"></span></h1>
+<!--posts.user.email-->
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
 </body>

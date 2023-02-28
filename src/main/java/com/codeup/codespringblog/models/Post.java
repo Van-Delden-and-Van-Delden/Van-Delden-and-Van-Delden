@@ -1,4 +1,4 @@
-package com.codeup.codespringblog;
+package com.codeup.codespringblog.models;
 
 import jakarta.persistence.*;
 
@@ -12,6 +12,11 @@ public class Post {
     private String title;
     @Column(nullable = false)
     private String body;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private User user;
+
     public int getId() {
         return id;
     }
@@ -20,10 +25,22 @@ public class Post {
         this.id = id;
     }
 
+    public Post(int id, String title, String body, User user) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
 
+    public Post(String title, String body, User user) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
 
     public Post() {
     }
+
 
     public Post(int id, String title, String body) {
         this.id = id;
@@ -50,5 +67,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

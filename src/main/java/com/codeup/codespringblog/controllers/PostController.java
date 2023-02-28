@@ -1,19 +1,27 @@
-package com.codeup.codespringblog;
+package com.codeup.codespringblog.controllers;
 
+import com.codeup.codespringblog.models.Post;
+import com.codeup.codespringblog.models.User;
+import com.codeup.codespringblog.repositories.PostRepository;
+import com.codeup.codespringblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class PostController {
     private final PostRepository postDao;
 
-    public PostController(PostRepository postDao) {
+    private final UserRepository userDao;
+
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
+
+
 
     @GetMapping("/posts")
     public String index(Model model) {
@@ -30,15 +38,23 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String create() {
+    public String create(Model model) {
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("posts/create")
-    public String createPost(@RequestParam(name = "title") String title, @RequestParam(name="body") String body) {
-        Post post = new Post(title,body);
+    public String createPost(@ModelAttribute Post post) {
+        User user = userDao.findUserById(1);
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
+    }
+
+    @GetMapping("posts/{id}/edit")
+    public String editPost(Model model, @PathVariable long id) {
+        model.addAttribute("post", postDao.findPostsById(id));
+        return "posts/edit";
     }
 
 }
