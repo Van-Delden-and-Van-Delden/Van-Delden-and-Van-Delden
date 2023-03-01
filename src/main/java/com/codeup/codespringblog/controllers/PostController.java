@@ -4,6 +4,7 @@ import com.codeup.codespringblog.models.Post;
 import com.codeup.codespringblog.models.User;
 import com.codeup.codespringblog.repositories.PostRepository;
 import com.codeup.codespringblog.repositories.UserRepository;
+import com.codeup.codespringblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,12 @@ public class PostController {
 
     private final UserRepository userDao;
 
-    public PostController(PostRepository postDao, UserRepository userDao) {
+    private final EmailService emailService;
+
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
 
@@ -48,6 +52,7 @@ public class PostController {
         User user = userDao.findUserById(1);
         post.setUser(user);
         postDao.save(post);
+        emailService.prepareAndSend(post);
         return "redirect:/posts";
     }
 
