@@ -25,6 +25,12 @@ public class User {
 
     public User() {
     }
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
     public User(long id, String username, String email, String password) {
         this.id = id;
@@ -36,6 +42,13 @@ public class User {
     public User(long id, String username) {
         this.id = id;
         this.username = username;
+    }
+    public User(long id, String username, String email, String password, List<Post> posts) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.posts = posts;
     }
 
     public long getId() {

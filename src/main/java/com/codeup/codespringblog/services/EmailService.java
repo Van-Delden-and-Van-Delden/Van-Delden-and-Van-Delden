@@ -24,8 +24,8 @@ public class EmailService {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
         msg.setTo(post.getUser().getEmail());
-        msg.setSubject("Ad Created");
-        msg.setText("Ad Title: " + post.getTitle() + "\nAd Description: " + post.getBody());
+        msg.setSubject("Post Created");
+        msg.setText("Post Title: " + post.getTitle() + "\nPost Description: " + post.getBody());
 
         try{
             this.emailSender.send(msg);

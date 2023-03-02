@@ -39,6 +39,7 @@ nav button {
     cursor: pointer;
     outline: inherit;
 }
+
 footer {
     position: fixed;
     bottom: 0;
