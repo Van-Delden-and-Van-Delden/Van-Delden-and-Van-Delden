@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="partials :: head">
+  <meta charset="UTF-8">
+  <title>Idea Index</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<h1 id="indexHeader">Displaying All Ideas</h1>
+<div th:each="idea : ${ideaslist}">
+  <!--        <p th:text="${post.title}" />-->
+  <a th:href="@{/ideas/{id} (id = ${idea.id})}"><span th:text="${idea.title}"></span></a>
+  <p th:text="${idea.body}" />
+  <p th:text="${idea.scale}" />
+</div>
+<a href="/ideas/create" id="createIdea">Create an Idea</a>
+<footer th:replace="partials :: footer"></footer>
+<div th:insert="partials :: boot-scripts"></div>
+</body>
+
+</html>
