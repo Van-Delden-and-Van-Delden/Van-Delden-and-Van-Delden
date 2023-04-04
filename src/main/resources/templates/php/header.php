@@ -1,3 +1,5 @@
+<?php include "../config/database.php" ?>
+<?php include "User.php" ?>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>

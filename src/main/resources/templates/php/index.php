@@ -1,4 +1,6 @@
-<?php include "header.php" ?>
+<?php use templates\php\User;
+
+include "header.php" ?>
 <form action="index.php" method="post">
     <label for="counter">Counter</label>
     <input type="number" name="counter">
@@ -7,8 +9,11 @@
     <input type="submit">
 </form>
 <?php
+$user1 = new User("Karl", "karl@gmail.com", 'karl123');
+
+echo '<h1>' . $user1->getUsername() . '</h1>';
+
 $array = ["Test1", 25, "TEST2"];
-echo "<h1> Hello Kara you sexy thing</h1>";
 echo "<h1> The first array element is $array[0]";
 echo "<h1> The second array element is $array[1]";
 echo "<h1> The third array element is $array[2]";
