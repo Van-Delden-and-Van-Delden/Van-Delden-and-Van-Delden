@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body
-    <?php echo 'style="background-color:aliceblue;"'?>
->
-<?php include "header.html" ?>
+<?php include "header.php" ?>
 <form action="index.php" method="post">
     <label for="counter">Counter</label>
     <input type="number" name="counter">
@@ -71,8 +62,5 @@ $state = "Texas";
 addressInfo($address, $city, $state);
 
 
-include "footer.html";
-
+include "footer.php";
 ?>
-</body>
-</html>
