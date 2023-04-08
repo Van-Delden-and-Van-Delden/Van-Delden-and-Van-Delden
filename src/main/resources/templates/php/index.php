@@ -17,6 +17,9 @@ $array = ["Test1", 25, "TEST2"];
 echo "<h1> The first array element is $array[0]";
 echo "<h1> The second array element is $array[1]";
 echo "<h1> The third array element is $array[2]";
+if ($array != 55) {
+    echo "Completed";
+}
 echo "<br>";
 
 function doSomething($counter){
