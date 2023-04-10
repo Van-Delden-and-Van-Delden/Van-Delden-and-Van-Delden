@@ -13,3 +13,4 @@ if ($conn->connect_error) {
 
 echo "Connected!";
 ?>
+<!--NSERT INTO Customers SET ID=2, FirstName='User2'-->
