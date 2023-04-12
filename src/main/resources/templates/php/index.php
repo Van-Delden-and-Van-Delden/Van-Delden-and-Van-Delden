@@ -12,6 +12,8 @@ include "header.php" ?>
 $user1 = new User("Karl", "karl@gmail.com", 'karl123');
 
 echo '<h1>' . $user1->getUsername() . '</h1>';
+echo '<h1>' . $user1->getEmail() . '</h1>';
+
 
 $array = ["Test1", 25, "TEST2"];
 echo "<h1> The first array element is $array[0]";
