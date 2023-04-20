@@ -10,6 +10,23 @@ class Response
     private $password;
     private $firstContact;
     private $arrivalTime;
+    private $hospArrival;
+
+    /**
+     * @return mixed
+     */
+    public function getHospArrival()
+    {
+        return $this->hospArrival;
+    }
+
+    /**
+     * @param mixed $hospArrival
+     */
+    public function setHospArrival($hospArrival)
+    {
+        $this->hospArrival = $hospArrival;
+    }
 
     /**
      * @return mixed
@@ -64,13 +81,14 @@ class Response
      * @param $email
      * @param $password
      */
-    public function __construct($username, $email, $password, $firstContact, $arrivalTime)
+    public function __construct($username, $email, $password, $firstContact, $arrivalTime, $hospArrival)
     {
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
         $this->firstContact = $firstContact;
         $this->arrivalTime = $arrivalTime;
+        $this->hospArrival = $hospArrival;
     }
 
 
